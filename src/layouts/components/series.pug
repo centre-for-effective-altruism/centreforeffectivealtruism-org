@@ -1,0 +1,21 @@
+mixin includeChild (item,index, useNumbering, useExcerpts)
+	- var file = item.file
+	- var file = item.file
+	case item.type
+		when 'page'
+			include ./series-page
+		when 'link'
+			include ./series-link
+
+mixin series(seriesSlug)
+	if seriesSlug && seriesSets[seriesSlug] && seriesSets[seriesSlug].children.length
+		each child,index in seriesSets[seriesSlug].children
+			if child.type === 'series'
+				section.series(id='series-'+child.file.slug)
+					h2.series-title!= child.file.title
+					.series-description
+						!= child.file.contents
+					each seriesChild,childIndex in child.children
+						+includeChild(seriesChild,childIndex,useNumbering, useExcerpts)
+			else
+				+includeChild(child,index,useNumbering, useExcerpts)

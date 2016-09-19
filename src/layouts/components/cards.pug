@@ -1,0 +1,31 @@
+mixin card(item, opts)
+	if !item
+		.alert.alert-danger
+			p
+				strong Error
+				|  item not passed to item card
+	else 
+		//- Set options
+		- var options = opts || {}
+		- var aspectPercentage = options.aspect ? options.aspect + (options.aspect.substr(options.aspect.length-1,1) === '%'?'':'%') : false;
+		- var thumbnail = item.featuredImage || item.photo || item.image || item.picture || item.thumbnail || false
+		//- Set some classes for the card
+		- var cardClasses = [];
+		- cardClasses.push('card-'+item.contentType)
+		//- merge generic flags into thumbnail styles
+		- var thumbnailStyles = {};
+		if thumbnail
+			- thumbnailUrl = contentfulImage(thumbnail)
+			- thumbnailStyles['background-image'] = 'url('+thumbnailUrl+')'
+		else
+			- cardClasses.push('card-no-thumbnail')
+		if aspectPercentage
+			- thumbnailStyles['padding-bottom'] = aspectPercentage
+		//- Build the card
+		figure.card(class=cardClasses)
+			.card-thumbnail(style=thumbnailStyles)
+				.content
+					a.card-thumbnail-link(href=item.path)
+			figcaption.card-caption
+				h4.card-title
+					a(href=item.path)!= typogr.typogrify(item.title)

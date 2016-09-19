@@ -1,0 +1,99 @@
+//- Facebook / Open Graph
+- var defaultLogo = url.parse(site.logo)
+- delete defaultLogo.search
+- defaultLogo.query = { fit: pad, bg: white };
+- defaultLogo = url.format(defaultLogo)
+
+mixin ogImageTags(contentfulImageURL)
+	- var sizes = [[1200,650],[300,300],[180,110],[120,120]]
+	each size in sizes
+		- var imageUrl = url.parse(contentfulImageURL, true)
+		- delete imageUrl.search
+		- imageUrl.query.w = size[0]
+		- imageUrl.query.h = size[1]
+		if !imageUrl.query.fit
+			- imageUrl.query.fit = 'thumb'
+		meta(property="og:image" content=url.format(imageUrl))
+		meta(property="og:image:width" content=size[0])
+		meta(property="og:image:height" content=size[1])
+
+//- OG Type info
+case collectionSlug
+	when 'talk'
+		meta(property="og:video" content=oembed.html.match(/src=\"(.+?)\"/i)[1])
+		meta(property="og:type" content='video.other')
+	default 
+		meta(property="og:type" content='website')
+
+//- OG Title / URL / Description
+- var ogTitle = title + ' - ' + site.title;
+if slug === 'home'
+	- ogTitle = site.title + ' - ' + site.shortDescription
+meta(property="og:title" content=ogTitle)
+meta(property="og:url" content=canonical)
+meta(property="og:description" content=strip(description))
+meta(property="og:locale" content="en_US")
+meta(property="og:site_name" content=site.title)
+
+//- OG Image tags info
+- var ogImage = ogImage || featuredImage || photo || image|| thumbnail || false
+if ogImage
+	- var ogImageURL = contentfulImage(ogImage)
+else
+	- var ogImageURL = defaultLogo
++ogImageTags(ogImageURL)
+
+//- Twitter Cards
+meta(name="twitter:card" content="summary")
+if site.social.twitter
+	meta(name="twitter:site" content=site.social.twitter)
+	meta(name="twitter:creator" content=site.social.twitter)
+- var twimgOpts = {w:300,h:300,fit:'thumb'};
+- var twimg = featuredImage || photo || image || thumbnail || false
+if twimg
+	- var twitterImage = contentfulImage(twimg,twimgOpts)
+else 
+	- var twimgUrl = url.parse(defaultLogo, true)
+	- delete twimgUrl.search
+	- twimgUrl.query.w = twimgOpts.w 
+	- twimgUrl.query.h = twimgOpts.h 
+	- var twitterImage = url.format(twimgUrl)
+meta(name="twitter:image" content=twitterImage)
+//- JSON Schema
+case collectionSlug
+	when 'video'
+		script(type="application/ld+json").
+			{
+				"@context": "http://schema.org",
+				"@type": "VideoObject",
+				"url": "#{canonical}",
+				"name": "#{title}",
+				"description": "#{strip(description)}",
+				"thumbnailUrl": "#{contentfulImage(thumbnail,{w:1920,h:1080})}",
+				"embedUrl": "#{oembed ? oembed.html.match(/src=\"(.+?)\"/i)[1] : embedUrl || canonical || 'false'}",
+				"datePublished": "#{moment(date).toISOString()}",
+				"uploadDate": "#{moment(date).toISOString()}"
+			}
+	when 'person'
+		script(type="application/ld+json").
+			{
+				"@context": "http://schema.org",
+				"@type": "Person",
+				"url": "#{canonical}",
+				"name": "#{title}"
+			}
+	when 'post'
+		script(type="application/ld+json").
+			{
+				"@context": "http://schema.org",
+				"@type": "BlogPosting",
+				"url": "#{canonical}",
+				"name": "#{title}"
+			}
+	default
+		script(type="application/ld+json").
+			{
+				"@context": "http://schema.org",
+				"@type": "WebPage",
+				"name": "#{title} - #{site.title}"
+			}
