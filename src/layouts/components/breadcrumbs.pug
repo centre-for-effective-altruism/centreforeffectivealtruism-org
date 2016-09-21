@@ -2,8 +2,8 @@ if breadcrumb_path.length>1
 	ol.breadcrumb
 		each breadcrumb,index in breadcrumb_path
 			if breadcrumb.file
-				if path!==breadcrumb.path
+				if path.replace(/\//g,'')!==breadcrumb.path.replace(/\//g,'')
 					li
-						a(href=breadcrumb.file.path)!= breadcrumb.file.title
+						a(href=breadcrumb.file.path)!= breadcrumb.file.shortTitle || breadcrumb.file.title
 				else
 					li!= breadcrumb.file.title

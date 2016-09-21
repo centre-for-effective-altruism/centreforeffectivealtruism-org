@@ -1,16 +1,20 @@
 
 #navbar-main{
+	transition: background 0.7s ease-in-out, border 0.7s ease-in-out, color 0.7s ease-in-out;
+	font-family: $font-family-sans-serif;
+	font-size: 16px;
 	background-color: #FFF;
-	border-bottom: 1px solid #DDD;
-	transition: background 0.7s ease-in-out, border 0.7s ease-in-out;
+	border-bottom: 2px solid $site-primary;
 	li.nav {
+		&>a {
+				color: $site-primary;
+		}
 		&.active>a {
-		    border-bottom: 4px solid $site-primary;
-		    padding-bottom: 15.5px;
+		    border-bottom: 4px solid $site-highlight;
+		    padding-bottom: 11.5px;
 		}
 	}
 	&.nav-minimal {
-		background-color: rgba(255,255,255,0);
 		border-color: transparent;
 		.navbar-header-brand {
 			opacity: 0;
@@ -29,9 +33,9 @@
 
 }
 .navbar-header-brand-logo-wrapper {
-	$padding: 5px;
-	height: $navbar-height - (2 * $padding);
-	width: 84px;
+	$padding: 10px;
+	height: $navbar-height;
+	width: 154px;
 	padding: $padding 0;
 }
 

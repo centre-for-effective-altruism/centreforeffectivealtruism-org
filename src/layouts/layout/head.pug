@@ -19,6 +19,9 @@ head
         meta(name="robots" content="noindex,nofollow")
     include ./schema
     include ./favicons
+    //- use geolify service to redirect visitors to the correct donation page based on their location
+    if environment !== 'development' && path === '/donate/'
+        script(src='https://www.geolify.com/georedirect.php?id=10584')
     script.
         // fast pre-rendering check for javascript capability without requiring Modernizr in the head
         var h = document.documentElement

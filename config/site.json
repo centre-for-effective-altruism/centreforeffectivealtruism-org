@@ -1,11 +1,12 @@
 {
-  "title" : "Contentful Metalsmith Boilerplate",
-  "domain" : "contentful-metalsmith-demo.netlify.com",
-  "protocol" : "http://",
-  "description": "Boilerplate for getting a Contentful/Metalsmith site up and running quickly",
-  "keywords": "contentful, metalsmith, netlify, boilerplate",
-  "logo": "https://images.contentful.com/mtlo55dqox3k/6cISVamQ7YIm0UoAywuMue/12121ba1e377f1807d516e25fea05798/initech.png",
+  "title" : "Centre for Effective Altruism",
+  "domain" : "www.centreforeffectivealtruism.org",
+  "protocol" : "https://",
+  "description": "An organisation using evidence and analysis to help others as much as possible. At the forefront of the effective altruism movement.",
+  "keywords": "effective altruism, effective giving, philanthropy, philosophy",
+  "logo": "https://images.contentful.com/es8pp29e1wp8/1S3GbfZNWsEu0oewkgQIcK/83512426465d180b4f15b77e3ea2795b/CEA_Logo_Blue.png",
+  "tagline": "Combining Empathy with Evidence",
   "social": {
-    "twitter": false
+    "twitter": "@Effect_Altruism"
   }
 }

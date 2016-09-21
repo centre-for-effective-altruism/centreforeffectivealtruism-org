@@ -12,7 +12,7 @@ nav#navbar-main.navbar.navbar-primary.navbar-fixed-top.nav-minimal
                         - var file = item.file
                         case item.type
                             when 'page'
-                                li.nav(class=(breadcrumb_path && breadcrumb_path[0] && breadcrumb_path[0].path === file.path ? 'active' : ''))
+                                li.nav(class=(breadcrumb_path && breadcrumb_path.length && breadcrumb_path[0].path === file.path.replace(/\//g,'') ? 'active' : ''))
                                     a(href=file.path, id="navbar-link-"+file.slug, title=file.title)!= file.shortTitle || file.title
                             when 'link'
                                 li.nav(class=(file.uri.substr(0,1)==='/' && path.replace(/\//g,'') === file.uri.replace(/\//g,'') ? 'active' : ''))

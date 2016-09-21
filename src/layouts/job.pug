@@ -1,0 +1,25 @@
+extends ./page
+
+block content
+  #content
+    .row
+      main.col-md-10.col-md-offset-1.col-lg-8.col-lg-offset-2
+        include ./components/breadcrumbs
+          section.section-no-divider.section-application-deadline
+            h2.job-application-deadline-title Deadline
+            p.job-application-deadline-info
+              if moment.utc(endDateTime).tz('Europe/London').isAfter(moment.utc().tz('Europe/London'),'minute')
+                | Applications for this position must be recieved no later than 
+                strong!= moment.utc(endDateTime).tz('Europe/London').format('dddd, MMMM-Do-YYYY, h:mm-a-z').replace(/\-/g, '&nbsp;')
+              else 
+                | Applications for this position have closed
+        section.section-divider.section-position-description
+          h2.job-position-description-title Position description
+          != contents
+        if instructions
+          section.section-divider.section-application-instructions
+            h2.job-application-instructions-title How to apply
+            != instructions
+        if applicationUri
+        block postContent
+

@@ -1,0 +1,5 @@
+mixin seriesDonationOption(donationOption)
+  .series-donation-option.series-item(class=`series-donation-option-${donationOption.slug}`)
+    h3.series-donation-option-title!= donationOption.title
+    .series-donation-option-description
+      != donationOption.contents

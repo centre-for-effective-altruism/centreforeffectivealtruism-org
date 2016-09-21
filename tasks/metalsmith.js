@@ -40,8 +40,31 @@ const concat = require('metalsmith-concat')
 const branch = require('metalsmith-branch')
 message.status('Loaded utility plugins')
 // Markdown processing
-const markdown = require('metalsmith-markdownit')
+const MarkdownIt = require('metalsmith-markdownit')
 const MarkdownItAttrs = require('markdown-it-attrs')
+const MarkdownItContainer = require('markdown-it-container')
+const markdown = MarkdownIt({
+  plugin: {
+    pattern: '**/*.html'
+  },
+  breaks: true
+})
+.use(MarkdownItAttrs)
+.use(MarkdownItContainer, 'classname', {
+  validate: name => {
+    const classes = name.trim().split(' ')
+    return classes.every((className) => {
+      return /^[a-zA-Z0-9\-]+$/.test(className)
+    })
+  },
+  render: (tokens, idx) => {
+    if (tokens[idx].nesting === 1) {
+      return `<div class="${tokens[idx].info.trim()}">\n`
+    } else {
+      return '</div>\n'
+    }
+  }
+})
 const htmlPostprocessing = require(paths.lib('metalsmith/plugins/html-postprocessing'))
 const sanitizeShortcodes = require(paths.lib('metalsmith/plugins/sanitize-shortcodes.js'))
 const saveRawContents = require(paths.lib('metalsmith/plugins/save-raw-contents'))
@@ -52,14 +75,13 @@ const remapLayoutNames = require(paths.lib('metalsmith/plugins/remap-layout-name
 const shortcodes = require('metalsmith-shortcodes')
 const lazysizes = require('metalsmith-lazysizes')
 const icons = require('metalsmith-icons')
-const favicons = require(paths.lib('metalsmith/plugins/favicons'))
 message.status('Loaded layout plugins')
 // methods to inject into layouts / shortcodes
 const layoutUtils = {
   typogr: require('typogr'),
   truncate: require('truncate'),
   url: require('url'),
-  moment: require('moment'),
+  moment: require('moment-timezone'),
   slugify: require('slug'),
   strip: require(paths.helpers('strip-tags')),
   contentfulImage: require(paths.helpers('contentful-image')),
@@ -67,10 +89,11 @@ const layoutUtils = {
 }
 
 const shortcodeOpts = Object.assign({
-  directory: paths.templates('shortcodes'),
+  directory: paths.layouts('shortcodes'),
   pattern: '**/*.html',
   engine: 'pug',
-  extension: '.pug'
+  extension: '.pug',
+  cache: true
 }, layoutUtils)
 message.status('Loaded templating utilities')
 // metadata and structure
@@ -81,6 +104,7 @@ const collections = require('metalsmith-collections')
 const checkSlugs = require(paths.lib('metalsmith/plugins/check-slugs.js'))
 const excerpts = require('metalsmith-excerpts')
 const pagination = require('metalsmith-pagination')
+const createContentHierarchy = require(paths.lib('metalsmith/plugins/create-content-hierarchy'))
 const navigation = require('metalsmith-navigation')
 const create404 = require(paths.lib('metalsmith/plugins/create-404.js'))
 const rebase = require(paths.lib('metalsmith/plugins/rebase'))
@@ -96,11 +120,14 @@ let htmlMinifier
 let purifyCSS
 let cleanCSS
 let sitemap
+let favicons
 if (process.env.NODE_ENV === 'staging' || process.env.NODE_ENV === 'production') {
+  favicons = require(paths.lib('metalsmith/plugins/favicons'))
   htmlMinifier = require('metalsmith-html-minifier')
   purifyCSS = require(paths.lib('metalsmith/plugins/purifycss.js'))
   cleanCSS = require('metalsmith-clean-css')
   sitemap = require('metalsmith-sitemap')
+
   message.status('Loaded production modules')
 }
 // utility global const to hold 'site' info from our settings file, for reuse in other plugins
@@ -134,6 +161,7 @@ function build (buildCount) {
       }))
       .use(_message.info('Downloaded content from Contentful'))
       .use(processContentfulMetadata())
+      .use(createContentfulFileIdMap())
       .use(remapLayoutNames())
       .use(_message.info('Processed Contentful metadata'))
       .use(collections(contentTypes.collections))
@@ -141,6 +169,7 @@ function build (buildCount) {
       .use(_message.info('Added files to collections'))
       .use(checkSlugs())
       .use(create404())
+      .use(createContentHierarchy())
       .use(rebase([
         {
           pattern: 'pages/**/index.html',
@@ -153,6 +182,14 @@ function build (buildCount) {
         {
           pattern: 'posts/**/index.html',
           rebase: ['posts', 'blog']
+        },
+        {
+          pattern: 'people/**/index.html',
+          rebase: ['people', 'team']
+        },
+        {
+          pattern: 'jobs/**/index.html',
+          rebase: ['jobs', 'careers']
         }
       ]))
       .use(_message.info('Moved files into place'))
@@ -169,15 +206,10 @@ function build (buildCount) {
         }))
       )
       .use(_message.info('Added navigation metadata'))
-      .use(createContentfulFileIdMap())
       .use(createSeriesHierarchy())
       .use(_message.info('Built series hierarchy'))
       // Build HTML files
-      .use(markdown({
-        plugin: {
-          pattern: '**/*.html'
-        }
-      }).use(MarkdownItAttrs))
+      .use(markdown)
       .use(_message.info('Converted Markdown to HTML'))
       .use(htmlPostprocessing())
       .use(sanitizeShortcodes())
@@ -186,9 +218,14 @@ function build (buildCount) {
       .use(shortcodes(shortcodeOpts))
       .use(_message.info('Converted Shortcodes'))
       .use(deleteFiles({
-        filter: '@(series|links)/**' 
+        filter: '@(series|links|donation-options)/**'
       }))
       .use(saveRawContents())
+    if (process.env.NODE_ENV !== 'development') {
+      metalsmith.use(favicons('images/favicon.png'))
+      .use(_message.info('Created favicons'))
+    }
+    metalsmith
       .use(layouts(Object.assign({
         engine: 'pug',
         directory: paths.layouts(),
@@ -197,12 +234,12 @@ function build (buildCount) {
       }, layoutUtils)))
       .use(_message.info('Built HTML files from templates'))
       .use(icons({
-        fontDir: 'fonts',
+        fontDir: 'fonts'
       }))
       .use(_message.info('Added icon fonts'))
       .use(lazysizes({
         widths: [100, 480, 768, 992, 1200, 1800],
-        qualities: [ 50, 70, 70, 70, 70, 70],
+        qualities: [80, 70, 70, 70, 70, 70],
         backgrounds: ['.card-thumbnail'],
         ignore: '/images/**',
         ignoreSelectors: '.content-block-content',

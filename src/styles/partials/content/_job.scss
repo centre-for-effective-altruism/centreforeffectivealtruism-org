@@ -1,0 +1,24 @@
+.job-list {
+
+}
+
+.jobs-list-job {
+  border-bottom: 1px solid #EEE;
+}
+.jobs-list-job-title {
+  margin: 0;
+}
+.jobs-list-job-excerpt {
+  font-style: italic;
+}
+.jobs-list-job-end-date-time {
+  font-family: $font-family-sans-serif;
+  font-size: 16px;
+  color: #999;
+  margin: 0;
+}
+.jobs-list-job-closed {
+  .jobs-list-job-title {
+    text-decoration: line-through;
+  }
+}
