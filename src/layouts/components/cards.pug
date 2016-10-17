@@ -8,7 +8,7 @@ mixin card(item, opts)
 		//- Set options
 		- var options = opts || {}
 		- var aspectPercentage = options.aspect ? options.aspect + (options.aspect.substr(options.aspect.length-1,1) === '%'?'':'%') : false;
-		- var thumbnail = item.featuredImage || item.photo || item.image || item.picture || item.thumbnail || false
+		- var thumbnail = item.featuredImage || item.photo || item.logo || item.image || item.picture || item.thumbnail || false
 		//- Set some classes for the card
 		- var cardClasses = [];
 		- cardClasses.push('card-'+item.contentType)

@@ -1,0 +1,5 @@
+extends ./page
+
+block append contentText
+	.organization-website
+		a(href=website)!= url.parse(website).hostname
