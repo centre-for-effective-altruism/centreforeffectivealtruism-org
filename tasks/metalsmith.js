@@ -264,14 +264,13 @@ function build (buildCount) {
           keepConcatenated: false,
           forceOutput: true
         }))
-        .use(_message.info('Concatenated CSS files'))
         .use(purifyCSS())
-        .use(_message.info('Cleaned CSS files'))
         .use(cleanCSS({
           cleanCSS: {
             rebase: false
           }
         }))
+        .use(_message.info('Cleaned CSS files'))
         // delete sourcemaps and settings
         .use(deleteFiles({
           filter: '{**/*.map,settings/**}'
