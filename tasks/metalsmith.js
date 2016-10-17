@@ -45,7 +45,8 @@ const MarkdownItAttrs = require('markdown-it-attrs')
 const MarkdownItContainer = require('markdown-it-container')
 const markdown = MarkdownIt({
   plugin: {
-    pattern: '**/*.html'
+    pattern: '**/*.html',
+    fields: ['contents', 'instructions']
   },
   breaks: true
 })

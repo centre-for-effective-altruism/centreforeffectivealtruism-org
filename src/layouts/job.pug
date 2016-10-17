@@ -16,10 +16,12 @@ block content
         section.section-divider.section-position-description
           h2.job-position-description-title Position description
           != contents
-        if instructions
-          section.section-divider.section-application-instructions
+        section.section-divider.section-application
+          if instructions
             h2.job-application-instructions-title How to apply
             != instructions
-        if applicationUri
+          if applicationUrl
+            .job-application-application-link
+              a.btn.btn-primary(href=applicationUrl target="_blank") Click here to apply (opens in a new window)
         block postContent
 
