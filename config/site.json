@@ -6,6 +6,9 @@
   "description": "An organisation using evidence and analysis to help others as much as possible. At the forefront of the effective altruism movement.",
   "keywords": "effective altruism, effective giving, philanthropy, philosophy",
   "logo": "https://images.contentful.com/es8pp29e1wp8/1S3GbfZNWsEu0oewkgQIcK/83512426465d180b4f15b77e3ea2795b/CEA_Logo_Blue.png",
+  "defaults": {
+    "banner": "https://images.contentful.com/es8pp29e1wp8/5kOToVPms8YcWAGoqCQKS6/6897cc2ef88cdfc3c5b64619ba1a0f39/darker-earth.jpg"
+  },
   "tagline": "Combining Empathy with Evidence",
   "social": {
     "twitter": "@Effect_Altruism"

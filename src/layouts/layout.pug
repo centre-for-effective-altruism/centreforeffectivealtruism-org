@@ -7,7 +7,7 @@ html.no-js(prefix="og: http://ogp.me/ns#")
             section#content-wrapper
                 - var bannerImage = featuredImage || (breadcrumb_path && breadcrumb_path[0] && breadcrumb_path[0].file ? breadcrumb_path[0].file.featuredImage : false)
                 - var bannerImageUrl = bannerImage ? contentfulImage(bannerImage) : false
-                #banner(style=bannerImageUrl ? `background-image: url(${bannerImageUrl})` : false)
+                #banner(style=`background-image: url(${bannerImageUrl || site.defaults.banner})`)
                     block header
                         include ./layout/header
                         +header()
