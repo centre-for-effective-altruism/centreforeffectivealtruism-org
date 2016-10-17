@@ -45,7 +45,7 @@ else
 
 //- Twitter Cards
 meta(name="twitter:card" content="summary")
-if site.social.twitter
+if site.social && site.social.twitter
 	meta(name="twitter:site" content=site.social.twitter)
 	meta(name="twitter:creator" content=site.social.twitter)
 - var twimgOpts = {w:300,h:300,fit:'thumb'};
