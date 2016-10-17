@@ -18,7 +18,7 @@
 
 @mixin centered-heading(){
 	text-transform: uppercase;
-	background: $site-secondary;
+	background: #DDD;
 	text-align: center;
 	padding: $grid-gutter-width/2;
 }
