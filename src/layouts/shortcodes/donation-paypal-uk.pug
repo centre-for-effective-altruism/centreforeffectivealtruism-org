@@ -1,0 +1,8 @@
+extends ../components/donation-paypal
+
+block donationOptions
+  label(for="hosted_button_id") Please choose which organisation you would like to&nbsp;donate&nbsp;to:
+  select.form-control(name="hosted_button_id")
+      option(value="XHUH28FV3FKGQ" selected) Centre for Effective Altruism (unrestricted donation)
+      option(value="LK9FMF8ZFJE84") Giving What We Can
+      option(value="JDHK3NT4Q3LX2") 80,000 Hours
