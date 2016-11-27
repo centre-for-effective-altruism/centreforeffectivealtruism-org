@@ -2,6 +2,7 @@
 /donate/donate-from-the-usa /donate/united-states/ 301
 /donate/donate-from-europe /donate/europe/ 301
 /donations/donate-to-the-centre-for-effective-altruism-uk /donate/united-kingdom-worldwide/ 301
+/donate/uk-worldwide/ /donate/united-kingdom-worldwide/ 301
 /careers/why-work-with-us /careers/why-work-at-cea/ 301
 /careers/* /careers/ 301
 /donations /donate/ 301
