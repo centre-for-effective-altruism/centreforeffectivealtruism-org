@@ -77,4 +77,5 @@ global.breakpoints = {
 // main app scripts
 require('./lib/main')
 require('./lib/analytics')
+require('./lib/fundraising')
 // require('./lib/newsletter')

@@ -1,0 +1,63 @@
+mixin fundraisingBar()
+    .fundraising-bar
+      .progress.fundraising-bar-progress
+        .fundraising-bar-progress-progress-bar.progress-bar(role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100")
+          span(class="sr-only") 
+            span.fundraising-bar-progress-percentage 5
+            | % Complete
+        .fundraising-bar-progress-goal-remaining
+      .fundraising-bar-targets
+        .fundraising-bar-targets-target.fundraising-bar-targets-target-progress(data-amount=site.fundraising.progress)
+          span.fundraising-bar-targets-target-text-wrapper
+            span.fundraising-bar-targets-target-text Progress
+            span.fundraising-bar-targets-target-amount $
+              span.fundraising-bar-targets-target-amount-number!= site.fundraising.progress
+        .fundraising-bar-targets-target.fundraising-bar-targets-target-goal(data-amount=site.fundraising.minimum_target)
+          span.fundraising-bar-targets-target-text-wrapper
+            span.fundraising-bar-targets-target-text Minimum Target
+            span.fundraising-bar-targets-target-amount $
+              span.fundraising-bar-targets-target-amount-number!= site.fundraising.minimum_target
+        .fundraising-bar-targets-target.fundraising-bar-targets-target-stretch-goal(data-amount=site.fundraising.growth_target)
+          span.fundraising-bar-targets-target-text-wrapper
+            span.fundraising-bar-targets-target-text Growth Target
+            span.fundraising-bar-targets-target-amount $
+              span.fundraising-bar-targets-target-amount-number!= site.fundraising.growth_target
+
+
+mixin fundraisingCTA(showDonateButton)
+    .fundraising-cta
+        .fundraising-cta-text
+            h3.fundraising-cta-title The Centre for Effective Altruism is fundraising for 2017
+            p.fundraising-cta-description We're building a global community of people doing the most good they can. Help us make it even better.
+        if showDonateButton
+            .row
+                .col-md-8.col-lg-9
+                    .fundraising-cta-progress
+                        +fundraisingBar()
+                .col-md-4.col-lg-3
+                    .fundraising-cta-cta
+                        .row
+                            //- .col-xs-?
+                                a.btn.btn-default(href="/fundraising") Learn more
+                                    i.fa.fa-info
+                            .col-xs-12
+                                a.btn.btn-primary(href="/donate") Donate Now 
+                                    i.fa.fa-angle-double-right
+        else 
+            .fundraising-cta-progress
+                +fundraisingBar()
+
+mixin fundraising(testSlugs, isNav)
+    - var donationPage = (testSlugs.includes(slug) || (parent && testSlugs.includes(parent.fields.slug)))
+    if !donationPage && isNav
+        .container
+            .fundraising-cta-navigation.collapse
+                a.fundraising-cta-navigation-close.hidden-xs.hidden-sm.pull-right(href="#") Close
+                    i.fa.fa-times 
+                include ../components/fundraising-cta
+                +fundraisingCTA(true)
+                .center
+                    a.fundraising-cta-navigation-close.hidden-md.hidden-lg(href="#") Close
+                        i.fa.fa-times
+    else if donationPage && !isNav
+        +fundraisingCTA()
