@@ -12,5 +12,10 @@
   "tagline": "Combining Empathy with Evidence",
   "social": {
     "twitter": "@Effect_Altruism"
+  },
+  "fundraising": {
+    "progress": 26250,
+    "minimum_target": 3100000,
+    "growth_target": 6440000
   }
 }
