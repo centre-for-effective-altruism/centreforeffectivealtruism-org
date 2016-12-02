@@ -1,0 +1,26 @@
+$ct-series-colors: (
+  $site-primary,
+  $site-muted,
+  $site-dark,
+  $site-light,
+  $site-secondary-light,
+  $site-secondary-dark,
+  lighten($site-primary, 10),
+  lighten($site-muted, 10),
+  lighten($site-dark, 10),
+  lighten($site-light, 10),
+  lighten($site-secondary-light, 10),
+  lighten($site-secondary-dark, 10),
+  darken($site-primary, 10),
+  darken($site-muted, 10),
+  darken($site-dark, 10)
+);
+@import "../../../../node_modules/chartist/dist/scss/chartist.scss";
+
+.ct-label {
+  font-size: 1rem;
+}
+
+.ct-label-name {
+  font-family: $font-family-sans-serif;
+}
