@@ -1,0 +1,17 @@
+.cea-fundraiser-2017-bar-chart.ct-minor-seventh.ct-chart
+- var chartData = contentfulIDMap['VAlPjGQMEMq0Seyw6cuO4'].json
+- var chartLabels = chartData.map(row => row.label)
+- var chartSeries2016 = chartData.map(row => row.data['2016'])
+- var chartSeries2017 = chartData.map(row => row.data['2017'])
+script.
+  loadScript('charts')
+  loadScript(function () {
+    var data = {
+      labels: !{JSON.stringify(chartLabels)},
+      series: [
+        !{JSON.stringify(chartSeries2016)},
+        !{JSON.stringify(chartSeries2017)}
+      ]
+    }
+    new Chartist.Bar('.cea-fundraiser-2017-bar-chart', data)
+  })

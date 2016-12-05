@@ -1,10 +1,10 @@
 $ct-series-colors: (
   $site-primary,
-  $site-muted,
   $site-dark,
   $site-light,
   $site-secondary-light,
   $site-secondary-dark,
+  $site-muted,
   lighten($site-primary, 10),
   lighten($site-muted, 10),
   lighten($site-dark, 10),
@@ -16,7 +16,9 @@ $ct-series-colors: (
   darken($site-dark, 10)
 );
 @import "../../../../node_modules/chartist/dist/scss/chartist.scss";
-
+.ct-chart {
+  margin-bottom: $grid-gutter-width;
+}
 .ct-label {
   font-size: 1rem;
 }

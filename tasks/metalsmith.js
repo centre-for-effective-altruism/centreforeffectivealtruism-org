@@ -85,6 +85,7 @@ const layoutUtils = {
   moment: require('moment-timezone'),
   slugify: require('slug'),
   strip: require(paths.helpers('strip-tags')),
+  numeral: require('numeral'),
   contentfulImage: require(paths.helpers('contentful-image')),
   environment: process.env.NODE_ENV
 }
@@ -104,6 +105,9 @@ const contentTypes = require('../lib/metalsmith/helpers/content-types')
 const collections = require('metalsmith-collections')
 const checkSlugs = require(paths.lib('metalsmith/plugins/check-slugs.js'))
 const excerpts = require('metalsmith-excerpts')
+const headings = require('metalsmith-headings')
+const headingsIdentifier = require('metalsmith-headings-identifier')
+const hierarchicalHeadings = require(paths.lib('metalsmith/plugins/hierarchical-headings'))
 const pagination = require('metalsmith-pagination')
 const createContentHierarchy = require(paths.lib('metalsmith/plugins/create-content-hierarchy'))
 const navigation = require('metalsmith-navigation')
@@ -212,6 +216,14 @@ function build (buildCount) {
       // Build HTML files
       .use(markdown)
       .use(_message.info('Converted Markdown to HTML'))
+      .use(headingsIdentifier({
+        linkTemplate: '<a class="heading-permalink" href="#%s"><span></span></a>'
+      }))
+      .use(headings({
+        selectors: ['h2,h3,h4']
+      }))
+      .use(hierarchicalHeadings())
+      .use(_message.info('Identified headings'))
       .use(htmlPostprocessing())
       .use(sanitizeShortcodes())
       .use(_message.info('Post-processed HTML'))
@@ -219,7 +231,7 @@ function build (buildCount) {
       .use(shortcodes(shortcodeOpts))
       .use(_message.info('Converted Shortcodes'))
       .use(deleteFiles({
-        filter: '@(series|links|donation-options)/**'
+        filter: `@(${contentTypes.exclusion.join('|')})/**`
       }))
       .use(saveRawContents())
     if (process.env.NODE_ENV !== 'development') {

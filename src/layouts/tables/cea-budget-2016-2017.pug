@@ -1,0 +1,25 @@
+- var chartData = contentfulIDMap['VAlPjGQMEMq0Seyw6cuO4'].json
+- var chartLabels = chartData.map(row => row.label)
+- var chartSeries2016 = chartData.map(row => row.data['2016'])
+- var chartSeries2017 = chartData.map(row => row.data['2017'])
+- var total2016 = chartSeries2016.reduce((prev, curr) => {return prev + curr}, 0)
+- var total2017 = chartSeries2017.reduce((prev, curr) => {return prev + curr}, 0)
+- var numeralMoneyFormat = '0,0'
+table.table.table-striped
+  thead
+    tr
+      th Item
+      th.right 2016 (actual)
+      th.right 2017 (projected)
+  tbody
+    each item, index in chartLabels
+      tr
+        td!= item
+        td.right #{numeral(chartSeries2016[index]).format(numeralMoneyFormat)}
+        td.right #{numeral(chartSeries2017[index]).format(numeralMoneyFormat)}
+  tfoot
+    tr
+      td Total (GBP)
+      td.right £ #{numeral(total2016).format(numeralMoneyFormat)}
+      td.right £ #{numeral(total2017).format(numeralMoneyFormat)}
+

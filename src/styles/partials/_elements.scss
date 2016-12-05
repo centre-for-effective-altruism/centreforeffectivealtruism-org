@@ -9,6 +9,10 @@ body {
 h1,h2,h3,h4,h5,h6 {
 	// color: $site-primary;
 }
+h5 {
+    font-size: 16px;
+    color: #999;
+}
 // don't line-wrap code blocks
 pre {
     overflow-x: auto;
@@ -51,10 +55,11 @@ table {
 			}
 		}
 	}
-	tbody {
+	tfoot {
 		tr {
-			th {
+			td {
 				background-color: $site-secondary;
+				color: #FFF;
 			}
 		}
 	}
@@ -66,7 +71,7 @@ table {
 	}
 }
 ul {
-	padding-left: 0;
+	padding-left: $grid-gutter-width / 2;
 }
 
 ::selection {
