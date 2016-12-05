@@ -1,5 +1,7 @@
 mixin seriesPerson(person)
-  .series-person.series-item
+  .series-person.series-item(
+    class=[(format ? `format-${format}` : '')]
+  )
     .row
       .col-xs-4.col-lg-3
         if person.photo
@@ -7,10 +9,14 @@ mixin seriesPerson(person)
             img.series-person-photo(src=contentfulImage(person.photo))
       .col-xs-8.col-lg-9
         a(href=person.path)
-          h3.series-person-title!= person.title
+          if !format || format !== 'minimal'
+            h3.series-person-title!= person.title
+          else
+            h4.series-person-title!= person.title
         if person.jobTitle
           p.series-person-job-title!= person.jobTitle
-        if person.homeBase
-          p.series-person-home-base!= person.homeBase
-        if person.contents
-          != person.contents
+        if !format || format !== 'minimal'
+          if person.homeBase
+            p.series-person-home-base!= person.homeBase
+          if person.contents
+            != person.contents
