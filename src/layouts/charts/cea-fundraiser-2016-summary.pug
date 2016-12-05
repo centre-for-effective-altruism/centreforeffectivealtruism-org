@@ -1,0 +1,66 @@
+.cea-fundraiser-2016-summary.ct-minor-seventh
+script.
+  loadScript('charts')
+  loadScript(function () {
+    var data = {
+      series: [
+        {
+          name: 'Staff Salaries and taxes',
+          value: 329478
+        },
+        {
+          name: 'Student group grants',
+          value: 11380
+        },
+        {
+          name: 'Office rent and expenses',
+          value: 4400
+        },
+        {
+          name: 'Internship expenses',
+          value: 16780
+        },
+        {
+          name: 'Sundries',
+          value: 23300
+        },
+        {
+          name: 'Staff Equipment and training',
+          value: 25090
+        },
+        {
+          name: 'Marketing and Online Activities',
+          value: 6590
+        },
+        {
+          name: 'Contractors/design/copywriting',
+          value: 51551
+        },
+        {
+          name: 'Travel',
+          value: 20140
+        }
+      ]
+    }
+
+    var multipleCurrencies = Chartist.fn.multipleCurrencies([{
+      currencySymbol: '£',
+      exchangeRate: 1
+    }, {
+      currencySymbol: String.fromCharCode(36),
+      exchangeRate: 0.8
+    }])
+
+    var options = {
+      chartPadding: 90,
+      labelOffset: 90,
+      labelDirection: 'explode',
+      labelInterpolationFnc: multipleCurrencies,
+      plugins: [
+        Chartist.plugins.labelNames()
+      ]
+    }
+
+    var ceaFundraiser2016Summary = new Chartist.Pie('.cea-fundraiser-2016-summary', data, options)
+  })
+  

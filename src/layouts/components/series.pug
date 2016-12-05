@@ -18,7 +18,10 @@ mixin series(seriesSlug)
 		each child,index in seriesSets[seriesSlug].children
 			if child.type === 'series'
 				section.series(class='series-'+child.file.slug)
-					h2.series-title!= child.file.title
+					if !format
+						h2.series-title!= child.file.title
+					else if format === 'minimal'
+						h3.series-title!= child.file.title
 					.series-description
 						!= child.file.contents
 					each seriesChild,childIndex in child.children
