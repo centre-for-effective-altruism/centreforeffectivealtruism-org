@@ -10,35 +10,35 @@ script.
         },
         {
           name: 'Student group grants',
-          value: 28620
-        },
-        {
-          name: 'Office rent and expenses',
-          value: 125786
-        },
-        {
-          name: 'Internship expenses',
           value: 38820
         },
         {
-          name: 'Sundries',
-          value: 19680
-        },
-        {
-          name: 'Staff Equipment and training',
-          value: 39960
-        },
-        {
-          name: 'Contractors/design/copywriting',
+          name: 'Office rent and expenses',
           value: 10920
         },
         {
-          name: 'Travel',
+          name: 'Internship expenses',
+          value: 39960
+        },
+        {
+          name: 'Sundries',
           value: 40600
         },
         {
-          name: 'Marketing and Online Activities',
+          name: 'Staff Equipment and training',
           value: 48660
+        },
+        {
+          name: 'Marketing and Online Activities',
+          value: 19680
+        },
+        {
+          name: 'Contractors/design/copywriting',
+          value: 125786
+        },
+        {
+          name: 'Travel',
+          value: 28620
         }
       ]
     }
@@ -47,12 +47,12 @@ script.
       currencySymbol: '£',
       exchangeRate: 1
     }, {
-      currencySymbol: '$',
+      currencySymbol: String.fromCharCode(36),
       exchangeRate: 0.8
     }])
 
     var options = {
-      chartPadding: 220,
+      chartPadding: 90,
       labelOffset: 90,
       labelDirection: 'explode',
       labelInterpolationFnc: multipleCurrencies,
@@ -61,5 +61,5 @@ script.
       ]
     }
 
-    var ceaFundraiser2016Summary = new Chartist.Pie('.cea-fundraiser-2017-summary', data, options)
+    var ceaFundraiser2017Summary = new Chartist.Pie('.cea-fundraiser-2017-summary', data, options)
   })

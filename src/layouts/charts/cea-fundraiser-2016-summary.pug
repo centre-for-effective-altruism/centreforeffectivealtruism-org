@@ -29,16 +29,16 @@ script.
           value: 25090
         },
         {
+          name: 'Marketing and Online Activities',
+          value: 6590
+        },
+        {
           name: 'Contractors/design/copywriting',
           value: 51551
         },
         {
           name: 'Travel',
           value: 20140
-        },
-        {
-          name: 'Marketing and Online Activities',
-          value: 6590
         }
       ]
     }
@@ -47,12 +47,12 @@ script.
       currencySymbol: '£',
       exchangeRate: 1
     }, {
-      currencySymbol: '$',
+      currencySymbol: String.fromCharCode(36),
       exchangeRate: 0.8
     }])
 
     var options = {
-      chartPadding: 220,
+      chartPadding: 90,
       labelOffset: 90,
       labelDirection: 'explode',
       labelInterpolationFnc: multipleCurrencies,
@@ -63,5 +63,4 @@ script.
 
     var ceaFundraiser2016Summary = new Chartist.Pie('.cea-fundraiser-2016-summary', data, options)
   })
-
   
