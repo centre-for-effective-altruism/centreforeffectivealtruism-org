@@ -31,18 +31,18 @@ mixin fundraisingCTA(showDonateButton)
             p.fundraising-cta-description We're building a global community of people doing the most good they can. Help us make it even better.
         if showDonateButton
             .row
-                .col-md-8.col-lg-9
+                .col-md-8
                     .fundraising-cta-progress
                         +fundraisingBar()
-                .col-md-4.col-lg-3
+                .col-md-4
                     .fundraising-cta-cta
                         .row
-                            //- .col-xs-?
-                                a.btn.btn-default(href="/fundraising") Learn more
-                                    i.fa.fa-info
-                            .col-xs-12
-                                a.btn.btn-primary(href="/donate") Donate Now 
-                                    i.fa.fa-angle-double-right
+                            .col-xs-12.col-sm-6
+                                a.btn.btn-default(href="/fundraising/") Learn more
+                                    i.fa.fa-file-text
+                            .col-xs-12.col-sm-6
+                                a.btn.btn-primary(href="/donate/") Donate Now 
+                                    i.fa.fa-heart
         else 
             .fundraising-cta-progress
                 +fundraisingBar()
