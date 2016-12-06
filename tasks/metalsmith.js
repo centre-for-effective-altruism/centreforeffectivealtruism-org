@@ -197,6 +197,17 @@ function build (buildCount) {
           rebase: ['jobs', 'careers']
         }
       ]))
+      .use((files, metalsmith, done) => {
+        // add dates to posts
+        const minimatch = require('minimatch')
+        Object.keys(files).filter(minimatch.filter('posts/*/index.html')).forEach((file) => {
+          const meta = files[file]
+          const newFilename = `${meta.date}/${meta.slug}/index.html`
+          files[newFilename] = files[file]
+          delete files[file]
+        })
+        done()
+      })
       .use(_message.info('Moved files into place'))
       .use(addPaths())
       .use(addCanonicalUrls())

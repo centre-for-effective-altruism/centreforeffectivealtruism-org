@@ -1,8 +1,8 @@
 // Schema for Posts
 module.exports = {
   name: {
-    singular: 'Post',
-    plural: 'Posts'
+    singular: 'Blog Post',
+    plural: 'Blog Posts'
   },
   slug: {
     singular: 'post',

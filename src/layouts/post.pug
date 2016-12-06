@@ -1,4 +1,30 @@
 extends ./page
 
-block postContent
-	include ./components/series-pagination
+block content
+  #content
+    .row
+      main.col-md-10.col-md-offset-1.col-lg-8.col-lg-offset-2
+        block contentText
+          aside.post-info-wrapper
+            include ./components/breadcrumbs
+            .post-info
+              | Posted 
+              //- post author
+              if authors
+                span.post-author by 
+                  include ./helpers/format-multiple-names
+                  +formatMultipleNamestoString(authors)
+                |  
+              | on 
+              //- post date
+              - var dateFormat = 'dddd, MMMM Do YYYY'
+              - var postedDate = moment(date).format(dateFormat)
+              - var updatedDate = moment(updated).format(dateFormat)
+              span.post-date
+                span.post-date-date.post-date-posted
+                  != postedDate
+                if updatedDate !== postedDate
+                  |  
+                  span.post-date-date.post-date-updated (last updated #{updatedDate})
+          != contents
+        block postContent

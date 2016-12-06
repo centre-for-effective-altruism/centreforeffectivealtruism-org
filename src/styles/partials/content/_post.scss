@@ -1,0 +1,21 @@
+$pad: $grid-gutter-width/2;
+$npad: $pad * -1;
+.post-info-wrapper {
+  margin-bottom: $grid-gutter-width;
+  padding: $pad;
+  background: #FAFAFA;
+  border: 1px solid #DDD;
+  border-radius: 5px;
+  .breadcrumb {
+    margin: $npad $npad $pad;
+    border-radius: 0;
+  }
+}
+.post-info {
+  font-weight: $font-weight-bold;
+}
+.post-date-updated {
+  display: block;
+  font-weight: $font-weight-normal;
+  font-style: italic;
+}
