@@ -83,6 +83,19 @@ span {
 	}
 }
 
+a.btn {
+	&.gwwc {
+		background-color: $gwwc !important;
+	}
+
+	&.eightythousandhours {
+		background-color: $eightythousandhours !important;
+	}
+	&.gpp {
+		background-color: $gpp !important;
+	}
+}
+
 
 .breadcrumb>li+li:before {
 	content: '> '
