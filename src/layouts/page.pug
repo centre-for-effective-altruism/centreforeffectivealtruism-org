@@ -11,8 +11,8 @@ block content
 			main.col-md-10.col-md-offset-1.col-lg-8.col-lg-offset-2
 				include ./components/breadcrumbs
 				//- REMOVE AFTER THIS LINE ONCE FUNDRAISING IS COMPLETE
-				//- include ./components/fundraising
-				//- +fundraising(['donate','fundraising', 'fundraiser'])
+				include ./components/fundraising
+				+fundraising(['donate','fundraising', 'fundraiser'])
 				//- REMOVE BEFORE THIS LINE ONCE FUNDRAISING IS COMPLETE
 				block contentText
 					!= contents
