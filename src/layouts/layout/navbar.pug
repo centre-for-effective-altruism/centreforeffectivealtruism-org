@@ -18,6 +18,6 @@ nav#navbar-main.navbar.navbar-primary.navbar-fixed-top.nav-minimal
                                 li.nav(class=(file.uri.substr(0,1)==='/' && path.replace(/\//g,'') === file.uri.replace(/\//g,'') ? 'active' : ''))
                                     a(href=file.uri id="navbar-link-"+slugify(file.title) target=file.uri.substr(0,1)==='/'?false:'_blank')!= file.title
     //- REMOVE BELOW AFTER FUNDRAISER IS COMPLETE
-    //- include ../components/fundraising
-    //- +fundraising(['donate','fundraising', 'fundraiser'], true)
+    include ../components/fundraising
+    +fundraising(['donate','fundraising', 'fundraiser'], true)
     //- REMOVE ABOVE AFTER FUNDRAISER IS COMPLETE
