@@ -52,11 +52,8 @@ mixin fundraising(testSlugs, isNav)
     if !donationPage && isNav
         .container
             .fundraising-cta-navigation.collapse
-                a.fundraising-cta-navigation-close.hidden-xs.hidden-sm.pull-right(href="#") Close
+                a.fundraising-cta-navigation-close.pull-right(href="#") Close
                     i.fa.fa-times 
                 +fundraisingCTA(true)
-                .center
-                    a.fundraising-cta-navigation-close.hidden-md.hidden-lg(href="#") Close
-                        i.fa.fa-times
     else if donationPage && !isNav
         +fundraisingCTA()
