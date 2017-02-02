@@ -43,6 +43,9 @@ message.status('Loaded utility plugins')
 const MarkdownIt = require('metalsmith-markdownit')
 const MarkdownItAttrs = require('markdown-it-attrs')
 const MarkdownItContainer = require('markdown-it-container')
+const MarkdownItSup = require('markdown-it-sup')
+const MarkdownItSub = require('markdown-it-sub')
+const MarkdownItFootnote = require('markdown-it-footnote')
 const markdown = MarkdownIt({
   plugin: {
     pattern: '**/*.html',
@@ -51,6 +54,9 @@ const markdown = MarkdownIt({
   breaks: true
 })
 .use(MarkdownItAttrs)
+.use(MarkdownItSup)
+.use(MarkdownItSub)
+.use(MarkdownItFootnote)
 .use(MarkdownItContainer, 'classname', {
   validate: name => {
     const classes = name.trim().split(' ')
