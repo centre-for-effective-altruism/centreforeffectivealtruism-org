@@ -22,6 +22,10 @@
           i.fa.fa-at
         input.form-control(type="email" name="email" placeholder="you@example.com" required)
     .form-group
+      label(for="anonymous")
+        input(name='anonymous' type='checkbox')
+        |  Send anonymous feedback
+    .form-group
       label(for="subject") Subject
       .input-group
         .input-group-addon
@@ -33,3 +37,20 @@
     button.btn.btn-primary(type="submit")
       i.fa.fa-paper-plane
       |  Send!
+  script.
+    loadScript(function() {
+      (function ($) {
+        var name = $('input[name=name]')
+        var email = $('input[name=email]')
+        var anonymous = $('input[name=anonymous]')
+        anonymous.change(function (event) {
+          if (this.checked) {
+            name.attr('disabled', true).val('Anonymous')
+            email.attr('disabled', true).val('feedback@centreforeffectivealtruism.org')
+          } else {
+            name.attr('disabled', false).val('')
+            email.attr('disabled', false).val('')
+          }
+        })
+      }(jQuery))
+    })
