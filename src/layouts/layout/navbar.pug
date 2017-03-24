@@ -17,3 +17,16 @@ nav#navbar-main.navbar.navbar-primary.navbar-fixed-top.nav-minimal
                             when 'link'
                                 li.nav(class=(file.uri.substr(0,1)==='/' && path.replace(/\//g,'') === file.uri.replace(/\//g,'') ? 'active' : ''))
                                     a(href=file.uri id="navbar-link-"+slugify(file.title) target=file.uri.substr(0,1)==='/'?false:'_blank')!= file.title
+                            when 'series'
+                                li.dropdown
+                                    a(href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false") #{file.title} #[span.caret]
+                                    ul.dropdown-menu
+                                        each _item in seriesSets[file.slug].children
+                                            - var _file = _item.file
+                                            case _item.type
+                                                when 'page'
+                                                    li
+                                                        a(href=_file.path, id="navbar-link-"+_file.slug, title=_file.title)!= _file.shortTitle || _file.title
+                                                when 'link'
+                                                    li
+                                                        a(href=_file.uri id="navbar-link-"+slugify(_file.title) target=_file.uri.substr(0,1)==='/'?false:'_blank')!= _file.title

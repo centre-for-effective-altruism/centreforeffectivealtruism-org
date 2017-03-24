@@ -34,7 +34,7 @@ require('lazysizesBGSet')
 
 // bootstrap javascript plugins
 
-// require('bootstrapDropdown')
+require('bootstrapDropdown')
 require('bootstrapCollapse')
 require('bootstrapTransition')
 // require('bootstrapAffix')
