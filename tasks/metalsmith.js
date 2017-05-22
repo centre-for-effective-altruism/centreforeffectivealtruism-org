@@ -124,6 +124,7 @@ const addPaths = require(paths.lib('metalsmith/plugins/add-paths.js'))
 const createContentfulFileIdMap = require(paths.lib('metalsmith/plugins/create-contentful-file-id-map.js'))
 const createSeriesHierarchy = require(paths.lib('metalsmith/plugins/create-series-hierarchy.js'))
 const addCanonicalUrls = require(paths.lib('metalsmith/plugins/add-canonical-urls'))
+const feed = require('metalsmith-feed')
 message.status('Loaded metadata plugins')
 
 // only require these modules in production
@@ -279,6 +280,12 @@ function build (buildCount) {
         }
       }))
       .use(_message.info('Added responsive image markup'))
+      .use(feed({
+        collection: 'posts',
+        destination: 'blog.xml',
+        image_url: 'https://www.centreforeffectivealtruism.org/apple-touch-icon-144x144.png'
+      }))
+      .use(_message.info('Created RSS Feed'))
 
     // stuff to only do in production
     if (process.env.NODE_ENV === 'staging' || process.env.NODE_ENV === 'production') {

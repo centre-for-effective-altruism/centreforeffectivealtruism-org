@@ -6,6 +6,11 @@ block content
 	#content
 		.row
 			main.col-md-10.col-md-offset-1.col-lg-8.col-lg-offset-2
+				if slug === 'posts'
+					p.pull-right
+						a(href='/blog.xml')
+							i.fa.fa-rss
+							|  RSS Feed
 				section.section-divider
 					each item, index in files
 						article.collection-item
