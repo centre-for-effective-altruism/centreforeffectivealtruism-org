@@ -26,5 +26,13 @@ block content
                 if updatedDate !== postedDate
                   |  
                   span.post-date-date.post-date-updated (last updated #{updatedDate})
+              if tags && tags.length
+                span.post-tags
+                  for tagFile in tags
+                    if tagFile.sys
+                      - var tag = contentfulIDMap[tagFile.sys.id]
+                      span.post-tags-tag.label.label-primary
+                        a(href=tag.path) #{tag.title} #[i.fa.fa-tag]
+                  //pre!= JSON.stringify(tagFile.sys.id)
           != contents
         block postContent

@@ -7,5 +7,6 @@ module.exports = {
   page: require('./page.js'),
   person: require('./person.js'),
   post: require('./post.js'),
-  series: require('./series.js')
+  series: require('./series.js'),
+  tag: require('./tag.js')
 }

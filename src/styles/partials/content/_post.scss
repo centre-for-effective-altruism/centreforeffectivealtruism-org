@@ -14,6 +14,15 @@ $npad: $pad * -1;
 .post-info {
   font-weight: $font-weight-bold;
 }
+.post-tags-tag {
+  &.label {
+    margin-right: $grid-gutter-width/2;
+    a {
+      color: #FFF;
+      font-family: $font-family-sans-serif;
+    }
+  }
+}
 .post-date-updated {
   display: block;
   font-weight: $font-weight-normal;

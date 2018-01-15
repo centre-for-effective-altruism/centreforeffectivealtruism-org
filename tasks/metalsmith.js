@@ -257,6 +257,13 @@ function build (buildCount) {
       .use(_message.info('Created favicons'))
     }
     metalsmith
+      // .use((files, metalsmith, done) => {
+      //   Object.keys(files).forEach(file => {
+      //     if (/^blog/.test(file) && files[file].tags) {
+      //       console.log('file', files[file].tags[0].sys)
+      //     }
+      //   })
+      // })
       .use(layouts(Object.assign({
         engine: 'pug',
         directory: paths.layouts(),

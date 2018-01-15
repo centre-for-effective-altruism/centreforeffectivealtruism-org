@@ -1,0 +1,18 @@
+extends ./page
+
+block content
+  #content
+    .row
+      main.col-md-10.col-md-offset-1.col-lg-8.col-lg-offset-2
+        block contentText
+          for post in posts
+            if post.tags && post.tags.some(tag => tag.fields.slug === slug)
+              article.collection-item
+                h2.collection-item-title
+                  a(href=post.path)!= post.title
+                if post.excerpt
+                  .collection-item-excerpt
+                    !=post.excerpt
+                .collection-read-more
+                  a.btn.btn-default(href=post.path) Read more
+                    i.fa.fa-chevron-right
