@@ -5,15 +5,16 @@ mixin formatMultipleNames(people)
       li.people-list-person
         a.person-name(href=person.path)!= person.title
       if people.length > 2 && index < people.length-2
-        li.people-list-divider-comma , 
+        li.people-list-divider-comma ,
       if people.length > 1 && index === people.length-2
         li.people-list-divider-amp  &amp;
 
 mixin formatMultipleNamestoString(people)
   each p, index in people
     - var person = contentfulIDMap[p.sys.id]
+    if person
       a.person-name(href=person.path)!= person.title
       if people.length > 2 && index < people.length-2
-        | , 
+        | ,
       if people.length > 1 && index === people.length-2
-        |  &amp; 
+        |  &amp;
