@@ -34,6 +34,7 @@
     .form-group
       label(for="message") Message
       textarea.form-control(name='message' rows='5' placeholder="Your message" required)
+    div(netlify-recaptcha)
     button.btn.btn-primary(type="submit")
       i.fa.fa-paper-plane
       |  Send!
