@@ -86,3 +86,10 @@ p,h1,h2,h3,h4,h5,.navbar a,#content-wrapper a,li,[class^="fa-"],[class*=" fa-"] 
 .affix-bottom {
 	position: absolute;
 }
+
+// hide netlify honeypot field
+
+.netlify-hide {
+    position: absolute;
+    left: -9999px;
+}

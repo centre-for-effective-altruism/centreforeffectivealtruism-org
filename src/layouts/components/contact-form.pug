@@ -8,13 +8,16 @@
       p 
         i.fa.fa-exclamation-triangle
         |  This form requires Javascript to be enabled.
-  form.form(id="contactForm" name="contact" action="/thank-you-email" method="post" netlify)
+  form.form(id="contactForm" name="contact" action="/thank-you-email" method="post" netlify netlify-honeypot="address")
     .form-group
       label(for="name") Name
       .input-group
         .input-group-addon
           i.fa.fa-user
         input.form-control(type="text" name="name" placeholder="Your Name" required)
+    .form-group.netlify-hide
+      label(for="address") Don't fill me out if you're a human
+      input.form-control(type="text" name="address" placeholder="address")
     .form-group
       label(for="email") Email address
       .input-group
