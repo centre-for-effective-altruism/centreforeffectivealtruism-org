@@ -1,25 +1,29 @@
-if jobs && jobs.length
-  ul.jobs-list
+.jobs-list-wrapper
+  h2.jobs-list-title Current opportunities
+  if jobs && jobs.length
     - var now = moment.utc().tz('Europe/London')
     - var currentJobs = jobs.filter((job) => moment.utc(job.endDateTime).tz('Europe/London').isAfter(now, 'm'))
-    - var prevJobs = jobs.filter((job) => moment.utc(job.endDateTime).tz('Europe/London').isSameOrBefore(now, 'm') && moment.utc(job.endDateTime).tz('Europe/London').isAfter(now.subtract(1,'week')), 'm')
+    - var prevJobs = jobs.filter((job) => moment.utc(job.endDateTime).tz('Europe/London').isSameOrBefore(now, 'm') && moment.utc(job.endDateTime).tz('Europe/London').isAfter(now.subtract(1,'month')), 'm')
     if currentJobs.length
-      h2.jobs-list-title Current opportunities
-      each job in currentJobs
-          li.jobs-list-job
-            h4.jobs-list-job-title
-              a(href=job.path)!= job.title
-            p.jobs-list-job-end-date-time 
-                | Application deadline: #{moment.utc(job.endDateTime).tz('Europe/London').format('dddd, MMMM Do YYYY, h:mm a z')}
-            if job.excerpt
-              .jobs-list-job-excerpt!= job.excerpt
+      ul.jobs-list
+        each job in currentJobs
+            li.jobs-list-job
+              h4.jobs-list-job-title
+                a(href=job.path)!= job.title
+              p.jobs-list-job-end-date-time
+                  | Application deadline: #{moment.utc(job.endDateTime).tz('Europe/London').format('dddd, MMMM Do YYYY, h:mm a z')}
+              if job.excerpt
+                .jobs-list-job-excerpt!= job.excerpt
     if prevJobs.length
       h2.jobs-list-title Recently closed opportunities
-      each job in prevJobs
-          li.jobs-list-job.jobs-list-job-closed
-            h4.jobs-list-job-title
-              a(href=job.path)!= job.title
-            p.jobs-list-job-end-date-time 
-                | Applications for this position have closed
-            if job.excerpt
-              .jobs-list-job-excerpt!= job.excerpt
+      ul.jobs-list
+        each job in prevJobs
+            li.jobs-list-job.jobs-list-job-closed
+              h4.jobs-list-job-title
+                a(href=job.path)!= job.title
+              p.jobs-list-job-end-date-time
+                  | Applications for this position have closed
+              if job.excerpt
+                .jobs-list-job-excerpt!= job.excerpt
+  else
+    p.jobs-list-empty Sorry, there are no positions currently open

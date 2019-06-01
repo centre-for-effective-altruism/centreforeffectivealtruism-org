@@ -2,8 +2,14 @@
 
 }
 
+.jobs-list-wrapper {
+  border: 2px solid $site-primary;
+  border-left: none;
+  border-right: none;
+}
+
 .jobs-list-job {
-  border-bottom: 1px solid #EEE;
+  margin: 30px 0;
 }
 .jobs-list-job-title {
   margin: 0;
@@ -24,4 +30,8 @@
 }
 .job-application-application-link {
     text-align: center;
+}
+
+.jobs-list-empty {
+  font-style: italic;
 }
