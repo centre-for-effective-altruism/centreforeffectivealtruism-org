@@ -9,7 +9,7 @@ block content
             h2.job-application-deadline-title Deadline
             p.job-application-deadline-info
               if moment.utc(endDateTime).tz('Europe/London').isAfter(moment.utc().tz('Europe/London'),'minute')
-                | Applications for this position must be recieved no later than 
+                | Applications for this position must be received no later than
                 strong!= moment.utc(endDateTime).tz('Europe/London').format('dddd, MMMM-Do-YYYY, h:mm-a-z').replace(/\-/g, '&nbsp;')
               else 
                 | Applications for this position have closed
