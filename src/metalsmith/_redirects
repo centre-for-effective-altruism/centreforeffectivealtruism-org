@@ -19,6 +19,8 @@ https://www.centerforeffectivealtruism.org/* https://www.centreforeffectivealtru
 https://centerforeffectivealtruism.org/* https://www.centreforeffectivealtruism.org/:splat 301!
 https://centreea.org/* https://www.centreforeffectivealtruism.org/:splat 301!
 https://centerea.org/* https://www.centreforeffectivealtruism.org/:splat 301!
+https://www.centreea.org/* https://www.centreforeffectivealtruism.org/:splat 301!
+https://www.centerea.org/* https://www.centreforeffectivealtruism.org/:splat 301!
 
 # Optional: Redirect default Netlify subdomain to primary domain
 https://centreforeffectivealtruism-org.netlify.com/* https://www.centreforeffectivealtruism.org/:splat 301!
