@@ -59,7 +59,7 @@
     "markdown-it-footnote": "^3.0.1",
     "markdown-it-sub": "^1.0.0",
     "markdown-it-sup": "^1.0.0",
-    "merge": "^1.2.0",
+    "merge": "^1.2.1",
     "metalsmith": "^2.2.0",
     "metalsmith-branch": "0.0.4",
     "metalsmith-clean-css": "^5.0.0",
