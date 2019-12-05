@@ -15,9 +15,6 @@
         .input-group-addon
           i.fa.fa-user
         input.form-control(type="text" name="name" placeholder="Your Name" required)
-    .form-group.netlify-hide
-      label(for="address") Don't fill me out if you're a human
-      input.form-control(type="text" name="other-comments" placeholder="nothing")
     .form-group
       label(for="email") Email address
       .input-group
@@ -37,6 +34,9 @@
     .form-group
       label(for="message") Message
       textarea.form-control(name='message' rows='5' placeholder="Your message" required)
+    .form-group.netlify-hide
+      label(for="other-comments") Don't fill me out if you're a human
+      input.form-control(type="text" name="other-comments" placeholder="nothing" tabindex=-1)
     div(netlify-recaptcha)
     button.btn.btn-primary(type="submit")
       i.fa.fa-paper-plane
