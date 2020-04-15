@@ -134,7 +134,6 @@ let cleanCSS
 let sitemap
 let favicons
 if (process.env.NODE_ENV === 'staging' || process.env.NODE_ENV === 'production') {
-  favicons = require(paths.lib('metalsmith/plugins/favicons'))
   htmlMinifier = require('metalsmith-html-minifier')
   purifyCSS = require(paths.lib('metalsmith/plugins/purifycss.js'))
   cleanCSS = require('metalsmith-clean-css')
@@ -252,11 +251,6 @@ function build (buildCount) {
         filter: `@(${contentTypes.exclusion.join('|')})/**`
       }))
       .use(saveRawContents())
-    if (process.env.NODE_ENV !== 'development') {
-      metalsmith.use(favicons('images/favicon.png'))
-      .use(_message.info('Created favicons'))
-    }
-    metalsmith
       .use(layouts(Object.assign({
         engine: 'pug',
         directory: paths.layouts(),
