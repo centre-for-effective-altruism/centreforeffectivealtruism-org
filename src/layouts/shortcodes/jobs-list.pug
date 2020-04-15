@@ -25,5 +25,8 @@
                   | Applications for this position have closed
               if job.excerpt
                 .jobs-list-job-excerpt!= job.excerpt
+    if !currentJobs.length && !prevJobs.length
+      p.jobs-list-empty Sorry, there are no positions currently open
+
   else
     p.jobs-list-empty Sorry, there are no positions currently open
