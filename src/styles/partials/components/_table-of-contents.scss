@@ -1,7 +1,7 @@
 .table-of-contents-wrapper {
 	background-color: $site-muted;
 	padding: $grid-gutter-width/2;
-	
+
 }
 .table-of-contents-title {
 	margin-top:0;
@@ -30,7 +30,6 @@
 		&>.table-of-contents {
 			padding-left: $grid-gutter-width;
 			&>.table-of-contents-item {
-				font-family: $font-family-serif;
 				font-weight: $font-weight-normal;
 				list-style: disc;
 				// font-size: 12px;

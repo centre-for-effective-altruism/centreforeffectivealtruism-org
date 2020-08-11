@@ -17,7 +17,7 @@
     "start": "npm run styles && npm run scripts && node ./tasks/server.js"
   },
   "engines": {
-    "node": "8.10"
+    "node": "12"
   },
   "repository": {
     "type": "git",
@@ -90,7 +90,7 @@
     "moment-timezone": "^0.5.5",
     "ncp": "^2.0.0",
     "needle": "^1.1.2",
-    "node-sass": "^3.10.0",
+    "node-sass": "^4.14.1",
     "numeral": "^1.5.6",
     "pad-number": "0.0.4",
     "pluralize": "^3.0.0",
