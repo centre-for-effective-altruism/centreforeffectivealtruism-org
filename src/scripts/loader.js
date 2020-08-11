@@ -33,7 +33,7 @@ $LAB
       timeout: 1000,
       classes: !global.wfInactive,
       google: {
-        families: ['Cormorant+Garamond:400,400i,700,700i', 'Lato:400']
+        families: ['Lato:300,300i,400,400i']
       }
     })
   })
