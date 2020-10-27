@@ -3557,9 +3557,10 @@ metalsmith-html-minifier@^2.1.0:
     lodash.defaultsdeep "^4.1.0"
     multimatch "^2.1.0"
 
-metalsmith-icons@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/metalsmith-icons/-/metalsmith-icons-0.5.0.tgz#d115fa1d940b06bcedf04eb8a249c0e684dd8b9e"
+metalsmith-icons@0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/metalsmith-icons/-/metalsmith-icons-0.6.0.tgz#064d497fb50f80d78c6ee50b8ef85ec920bfcdda"
+  integrity sha512-CaeZsdP2n8CtPLGlFd/DzwQdH7bfpohtMCKcaBxRVBP97neMHeL0nAbmxy4n26BahS0c/VmkA/5V66L9DnTOPQ==
   dependencies:
     adm-zip "^0.4.7"
     array-unique "^0.2.1"
