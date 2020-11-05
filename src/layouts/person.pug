@@ -3,13 +3,9 @@ extends ./page
 block content
   #content
     .row
-      main.col-md-10.col-md-offset-1.col-lg-8.col-lg-offset-2
+      main.col-md-10.col-md-offset-1.col-lg-8.col-lg-offset-2.person-main
         include ./components/breadcrumbs
-        .row
-          .col-lg-3
-            .person-photo-wrapper
-              img.person-photo(src=contentfulImage(photo))
-          .col-lg-9
-            p.person-job-title
-              != jobTitle
-            !=contents
+        .row.person-content
+          p.person-job-title
+            != jobTitle
+          !=contents
