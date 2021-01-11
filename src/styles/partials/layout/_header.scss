@@ -1,34 +1,33 @@
 #banner {
-	background-color: $site-dark;
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-attachment: fixed;
+  background-color: $site-dark;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 #header {
-	text-align: center;
-	min-height: 300px;
-	height: 50vh;
-	@media(min-width: $screen-lg) {
-		height: 40vh;
-	}
-	position: relative;
-	display: flex;
-	align-items: center;
+  text-align: center;
+  min-height: 300px;
+  height: 30vh;
+  @media (min-width: $screen-lg) {
+    height: 40vh;
+  }
+  position: relative;
+  display: flex;
+  align-items: center;
 }
 #header-logo {
-	margin: auto;
-	width: 100%;
-	top: 0;
-	bottom: 0;
+  margin: auto;
+  width: 100%;
+  top: 0;
+  bottom: 0;
 }
 .page-title-wrapper {
-	width: 100%;
-	margin: 0;
+  width: 100%;
+  margin: 0;
 }
 .page-title {
-	color: #FFF;
-	text-shadow: 0 0 10px rgba(0,0,0,.8);
-	margin: 18px 0;
-	padding: $grid-gutter-width;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  margin: 18px 0;
+  padding: $grid-gutter-width;
 }
