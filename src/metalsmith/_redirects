@@ -13,6 +13,7 @@
 /donate/united-states /donate 301
 /donate/united-kingdom-worldwide /donate 301
 /what-is-effective-altruism /ceas-guiding-principles 301
+/ceas-current-thinking /ceas-2018-strategy 301
 
 # Redirect domain aliases to primary domain
 https://www.centerforeffectivealtruism.org/* https://www.centreforeffectivealtruism.org/:splat 301!
