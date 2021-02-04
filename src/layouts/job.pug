@@ -9,9 +9,9 @@ block content
             h2.job-application-deadline-title Deadline
             p.job-application-deadline-info
               if moment.utc(endDateTime).tz('Europe/London').isAfter(moment.utc().tz('Europe/London'),'minute')
-                | Applications for this position must be received no later than
+                | Applications for this position must be received no later than#{' '}
                 strong!= moment.utc(endDateTime).tz('Europe/London').format('dddd, MMMM-Do-YYYY, h:mm-a-z').replace(/\-/g, '&nbsp;')
-              else 
+              else
                 | Applications for this position have closed
         section.section-divider.section-position-description
           h2.job-position-description-title Position description
@@ -24,4 +24,3 @@ block content
             .job-application-application-link
               a.btn.btn-primary(href=applicationUrl target="_blank") Click here to apply (opens in a new window)
         block postContent
-
