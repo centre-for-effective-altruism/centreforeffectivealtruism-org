@@ -94,7 +94,7 @@
     "numeral": "^1.5.6",
     "pad-number": "0.0.4",
     "pluralize": "^3.0.0",
-    "pug": "^2.0.0-beta6",
+    "pug": "^3.0.1",
     "pugify": "^1.0.5",
     "purify-css": "^1.1.9",
     "recursive-readdir": "^2.0.0",
