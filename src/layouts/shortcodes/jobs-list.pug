@@ -1,5 +1,4 @@
 .jobs-list-wrapper
-  h2.jobs-list-title Current opportunities
   if jobs && jobs.length
     - var now = moment.utc().tz('Europe/London')
     - var currentJobs = jobs.filter((job) => moment.utc(job.endDateTime).tz('Europe/London').isAfter(now, 'm'))
