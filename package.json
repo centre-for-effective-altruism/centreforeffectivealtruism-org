@@ -104,7 +104,7 @@
     "stringify-object": "^2.4.0",
     "striptags": "^2.1.1",
     "throttle-debounce": "^1.0.1",
-    "trim": "0.0.1",
+    "trim": "0.0.3",
     "truncate": "^2.0.0",
     "typogr": "^0.6.6",
     "uglify-js": "^2.7.3",
