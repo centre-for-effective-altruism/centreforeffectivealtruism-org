@@ -1,7 +1,7 @@
 .jobs-list-wrapper
   if jobs && jobs.length
     - var now = moment.utc().tz('Europe/London')
-    - var currentJobs = jobs.filter((job) => moment.utc(job.endDateTime).tz('Europe/London').isAfter(now, 'm'))
+    - var currentJobs = jobs.filter((job) => !job.endDateTime || moment.utc(job.endDateTime).tz('Europe/London').isAfter(now, 'm'))
     - var prevJobs = jobs.filter((job) => moment.utc(job.endDateTime).tz('Europe/London').isSameOrBefore(now, 'm') && moment.utc(job.endDateTime).tz('Europe/London').isAfter(now.subtract(1,'month')), 'm')
     if currentJobs.length
       ul.jobs-list
@@ -10,7 +10,11 @@
               h4.jobs-list-job-title
                 a(href=job.path)!= job.title
               p.jobs-list-job-end-date-time
-                  | Application deadline: #{moment.utc(job.endDateTime).tz('Europe/London').format('dddd, MMMM Do YYYY, h:mm a z')}
+                | Application deadline:
+                if job.endDateTime
+                  |  #{moment.utc(job.endDateTime).tz('Europe/London').format('dddd, MMMM Do YYYY, h:mm a z')}
+                else
+                  |  no deadline (rolling application)
               if job.excerpt
                 .jobs-list-job-excerpt!= job.excerpt
     if prevJobs.length

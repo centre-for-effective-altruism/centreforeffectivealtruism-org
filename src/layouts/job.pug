@@ -8,7 +8,9 @@ block content
           section.section-no-divider.section-application-deadline
             h2.job-application-deadline-title Deadline
             p.job-application-deadline-info
-              if moment.utc(endDateTime).tz('Europe/London').isAfter(moment.utc().tz('Europe/London'),'minute')
+              if !endDateTime
+                //- do nothing
+              else if moment.utc(endDateTime).tz('Europe/London').isAfter(moment.utc().tz('Europe/London'),'minute')
                 | Applications for this position must be received no later than#{' '}
                 strong!= moment.utc(endDateTime).tz('Europe/London').format('dddd, MMMM-Do-YYYY, h:mm-a-z').replace(/\-/g, '&nbsp;')
               else
