@@ -102,7 +102,7 @@
     "slack-node": "^0.1.8",
     "slug": "^0.9.1",
     "stringify-object": "^2.4.0",
-    "striptags": "^2.1.1",
+    "striptags": "^3.2.0",
     "throttle-debounce": "^1.0.1",
     "trim": "0.0.1",
     "truncate": "^2.0.0",
