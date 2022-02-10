@@ -90,7 +90,7 @@
     "moment-timezone": "^0.5.5",
     "ncp": "^2.0.0",
     "needle": "^1.1.2",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "numeral": "^1.5.6",
     "pad-number": "0.0.4",
     "pluralize": "^3.0.0",
