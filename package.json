@@ -26,7 +26,7 @@
   "author": "Sam Deere",
   "license": "ISC",
   "dependencies": {
-    "async": "^2.0.1",
+    "async": "^2.6.4",
     "autolinker": "^1.1.0",
     "better-console": "^0.2.4",
     "bootstrap-3-typeahead": "^4.0.1",
